@@ -11,10 +11,24 @@
         <servlet-name>LifeCycle</servlet-name>
         <servlet-class>com.HuangQingyun.week3.demo.LifeCycleServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.HuangQingyun.week3.demo.RegisterServlet</servlet-class>
-    </servlet>
+<!--    <servlet>-->
+<!--        <servlet-name>RegisterServlet</servlet-name>-->
+<!--        <servlet-class>com.HuangQingyun.week3.demo.RegisterServlet</servlet-class>-->
+<!--    </servlet>-->
+<!--    <servlet>-->
+<!--        <servlet-name>ConfigDemoServlet</servlet-name>-->
+<!--        <servlet-class>com.HuangQingyun.week4.demo.ConfigDemoServlet</servlet-class>-->
+<!--        <init-param>-->
+<!--                    <param-name>name</param-name>-->
+<!--                    <param-value>HuangQingyun</param-value>-->
+<!--                </init-param>-->
+<!--                <init-param>-->
+<!--                    <param-name>studentID</param-name>-->
+<!--                    <param-value>2019211001001107</param-value>-->
+<!--                </init-param>-->
+<!--    </servlet>-->
+
+
     <servlet-mapping>
         <servlet-name>name</servlet-name>
         <url-pattern>/hello</url-pattern>
@@ -23,9 +37,29 @@
         <servlet-name>LifeCycle</servlet-name>
         <url-pattern>/my</url-pattern>
     </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/jdbc</url-pattern>
-    </servlet-mapping>
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>RegisterServlet</servlet-name>-->
+<!--        <url-pattern>/register</url-pattern>-->
+<!--    </servlet-mapping>-->
 
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>ConfigDemoServlet</servlet-name>-->
+<!--        <url-pattern>/config</url-pattern>-->
+<!--    </servlet-mapping>-->
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:mysql://localhost:3306/userdb?serverTimezone=UTC</param-value>
+    </context-param>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>940818</param-value>
+    </context-param>
 </web-app>
