@@ -6,11 +6,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-  <head>
-    <title>Jsp — helloworld！</title>
-  </head>
-  <body>
-  <h1>helloworld</h1>
-  </body>
-</html>
+<%--<html>--%>
+<%--  <head>--%>
+<%--    <title>Jsp — helloworld！</title>--%>
+<%--  </head>--%>
+<%--  <body>--%>
+<%@include file="header.jsp"%>
+  <h1>welcome to my Home page</h1>
+  <a href="${pageContext.request.contextPath}/hello">HttpServlet--week2</a><br/>
+  <a href="${pageContext.request.contextPath}/my">LifeCycleServlet--week3</a><br/>
+  <a href="register.jsp">Regist.Jsp--week3</a><br/>
+  <a href="${pageContext.request.contextPath}/config">ConfigDemoServlet--week4</a><br/>
+
+<%@include file="footer.jsp"%>
+<%--  </body>--%>
+<%--</html>--%>
