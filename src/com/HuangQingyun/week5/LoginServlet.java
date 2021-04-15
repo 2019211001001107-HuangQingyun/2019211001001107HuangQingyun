@@ -18,18 +18,7 @@ public class LoginServlet extends HttpServlet {
     ResultSet rs=null;
     public void init() throws ServletException {
         super.init();
-        ServletContext config= getServletConfig().getServletContext();
-        String driver = config.getInitParameter("driver");
-        String url = config.getInitParameter("url");
-        String username = config.getInitParameter("username");
-        String password = config.getInitParameter("password");
-        try {
-            Class.forName(driver);
-            con= DriverManager.getConnection(url, username, password);
-            System.out.println("init->"+con);
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+        con= (Connection) getServletContext().getAttribute("con");
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String sql="Select * from usertable where username=? and password=?";
@@ -41,19 +30,25 @@ public class LoginServlet extends HttpServlet {
             pstmt.setString(1,username);
             pstmt.setString(2,password);
             rs=pstmt.executeQuery();
-            response.setContentType("text/html");
+//            response.setContentType("text/html");
             PrintWriter out=response.getWriter();
-            out.println("<HTML>");
-            out.println("<HEAD><TITLE>UsingServlet</TITLE></HEAD>");
-            out.println("<Body>");
+//            out.println("<HTML>");
+//            out.println("<HEAD><TITLE>UsingServlet</TITLE></HEAD>");
+//            out.println("<Body>");
 
             if(rs.next()){
-                out.println("Login Success!!!");
-                out.println("<br/>");
-                out.println("Welcome,"+username);
+                request.setAttribute("id",rs.getString("id"));
+                request.setAttribute("username",rs.getString("username"));
+                request.setAttribute("password",rs.getString("password"));
+                request.setAttribute("email",rs.getString("email"));
+                request.setAttribute("Gender",rs.getString("Gender"));
+                request.setAttribute("birthdate",rs.getDate("birthdate"));
+
+                request.getRequestDispatcher("userInfo.jsp").forward(request,response);
 
             }else{
-                out.println("Username or Password Error!!!");
+                request.setAttribute("message","Username or Password Error!!!");
+                request.getRequestDispatcher("userInfo.jsp").forward(request,response);
 
             }
             out.println("</HTML>");

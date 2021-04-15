@@ -19,19 +19,20 @@ public class RegisterServlet extends HttpServlet {
     Statement stmt=null;
     ResultSet rs=null;
     public void init(){
-        ServletContext config= getServletConfig().getServletContext();
-        String driver = config.getInitParameter("driver");
-        String url = config.getInitParameter("url");
-        String username = config.getInitParameter("username");
-        String password = config.getInitParameter("password");
-
-        try {
-            Class.forName(driver);
-            con= DriverManager.getConnection(url, username, password);
-            System.out.println("init->"+con);
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
+//        ServletContext config= getServletConfig().getServletContext();
+//        String driver = config.getInitParameter("driver");
+//        String url = config.getInitParameter("url");
+//        String username = config.getInitParameter("username");
+//        String password = config.getInitParameter("password");
+//
+//        try {
+//            Class.forName(driver);
+//            con= DriverManager.getConnection(url, username, password);
+//            System.out.println("init->"+con);
+//        } catch (SQLException | ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+        con= (Connection) getServletContext().getAttribute("con"); //调用上下文参数
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -57,44 +58,32 @@ public class RegisterServlet extends HttpServlet {
             rs=stmt.executeQuery(sql);
             response.setContentType("text/html");
             PrintWriter out=response.getWriter();
-            out.println("<table  border=\"1\">");
-            out.println("<tr>");
-            out.println("<td>"+"ID"+"</td>");
-            out.println("<td>"+"Username"+"</td>");
-            out.println("<td>"+"Password"+"</td>");
-            out.println("<td>"+"Email"+"</td>");
-            out.println("<td>"+"Gender"+"</td>");
-            out.println("<td>"+"Birthdate"+"</td>");
-            out.println("</tr>");
-            while(rs.next()) {
-                out.println("<tr>");
-                out.println("<td>" + rs.getString("id") + "</td>");
-                out.println("<td>" + rs.getString("username") + "</td>");
-                out.println("<td>" + rs.getString("password") + "</td>");
-                out.println("<td>" + rs.getString("email") + "</td>");
-                out.println("<td>" + rs.getString("Gender") + "</td>");
-                out.println("<td>" + rs.getDate("birthdate") + "</td>");
-                out.println("</tr>");
-            }
-            out.println("</table>");
-
+//            out.println("<table  border=\"1\">");
+//            out.println("<tr>");
+//            out.println("<td>"+"ID"+"</td>");
+//            out.println("<td>"+"Username"+"</td>");
+//            out.println("<td>"+"Password"+"</td>");
+//            out.println("<td>"+"Email"+"</td>");
+//            out.println("<td>"+"Gender"+"</td>");
+//            out.println("<td>"+"Birthdate"+"</td>");
+//            out.println("</tr>");
+//            while(rs.next()) {
+//                out.println("<tr>");
+//                out.println("<td>" + rs.getString("id") + "</td>");
+//                out.println("<td>" + rs.getString("username") + "</td>");
+//                out.println("<td>" + rs.getString("password") + "</td>");
+//                out.println("<td>" + rs.getString("email") + "</td>");
+//                out.println("<td>" + rs.getString("Gender") + "</td>");
+//                out.println("<td>" + rs.getDate("birthdate") + "</td>");
+//                out.println("</tr>");
+//            }
+//            out.println("</table>");
+            request.setAttribute("rsname",rs);
+//        request.getRequestDispatcher("userList.jsp").forward(request,response);
+//            System.out.println(" i am in RegisterServlet-> do Post() ->after forward()");
+            response.sendRedirect("login.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally{
-            if(pstmt!=null){
-                try {
-                    pstmt.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
-            if(con!=null){
-                try {
-                    con.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
 
 
