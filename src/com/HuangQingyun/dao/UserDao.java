@@ -5,6 +5,7 @@ import com.HuangQingyun.model.User;
 
 import java.sql.*;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDao implements IUserDao {
@@ -76,7 +77,7 @@ public class UserDao implements IUserDao {
         st.setString(1,username);
         ResultSet rs=st.executeQuery();
         User user=null;
-        List<User> ls =null;
+        List<User> ls =new ArrayList<User>();
         if(rs.next()){
             user=new User();
             user.setId(rs.getString(1));
@@ -97,7 +98,7 @@ public class UserDao implements IUserDao {
         st.setString(1,password);
         ResultSet rs=st.executeQuery();
         User user=null;
-        List<User> ls =null;
+        List<User> ls =new ArrayList<User>();
         if(rs.next()){
             user=new User();
             user.setId(rs.getString(1));
@@ -118,7 +119,7 @@ public class UserDao implements IUserDao {
         st.setString(1,email);
         ResultSet rs=st.executeQuery();
         User user=null;
-        List<User> ls =null;
+        List<User> ls =new ArrayList<User>();
         if(rs.next()){
             user=new User();
             user.setId(rs.getString(1));
@@ -139,7 +140,7 @@ public class UserDao implements IUserDao {
         st.setString(1,gender);
         ResultSet rs=st.executeQuery();
         User user=null;
-        List<User> ls =null;
+        List<User> ls =new ArrayList<User>();
         if(rs.next()){
             user=new User();
             user.setId(rs.getString(1));
@@ -161,7 +162,7 @@ public class UserDao implements IUserDao {
         st.setDate(1,birthDate);
         ResultSet rs=st.executeQuery();
         User user=null;
-        List<User> ls =null;
+        List<User> ls =new ArrayList<User>();
         if(rs.next()){
             user=new User();
             user.setId(rs.getString(1));
@@ -182,7 +183,7 @@ public class UserDao implements IUserDao {
 
         ResultSet rs=st.executeQuery(sql);
         User user=null;
-        List<User> ls =null;
+        List<User> ls =new ArrayList<User>();
         if(rs.next()){
             user=new User();
             user.setId(rs.getString(1));
