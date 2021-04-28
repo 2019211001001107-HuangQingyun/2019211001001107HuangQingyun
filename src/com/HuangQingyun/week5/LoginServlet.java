@@ -7,9 +7,7 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
@@ -42,7 +40,24 @@ public class LoginServlet extends HttpServlet {
         try {
             User user=userDao.findByUsernamePassword(con,username,password);
             if(user!=null){
-                request.setAttribute("user",user);
+
+                String rememberMe=request.getParameter("rememberMe");
+                if(rememberMe!=null&&rememberMe.equals("1")){  //want to remember  create 3 cookies
+                    Cookie UsernameCookie = new Cookie("cUsername", user.getUsername());
+                    Cookie PasswordCookie = new Cookie("cPassword", user.getPassword());
+                    Cookie RememberMeCookie = new Cookie("cRememberMe",rememberMe);
+                    UsernameCookie.setMaxAge(10);
+                    PasswordCookie.setMaxAge(10);
+                    RememberMeCookie.setMaxAge(10);
+                    response.addCookie(UsernameCookie);
+                    response.addCookie(PasswordCookie);
+                    response.addCookie(RememberMeCookie);
+                }
+                // week 8 code --demo#1  use cookie for session
+                HttpSession session = request.getSession();
+                System.out.println("session id  ---"+session.getId());
+                session.setMaxInactiveInterval(10);
+                session.setAttribute("user",user);
                 request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
             }else{
                 request.setAttribute("message","Username or Password Error!!!");

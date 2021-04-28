@@ -9,6 +9,14 @@
 
 <%@include file="header.jsp"%>
 <h1>User Info</h1>
+
+<%
+ //read cookies
+    Cookie[] Cookies = request.getCookies();
+    for(Cookie c:Cookies){
+         out.println("<br/>"+c.getName()+"--------"+c.getValue());
+    }
+%>
 <table  >
     <tr>
         <td>ID</td><td><%=request.getAttribute("id")%></td>
