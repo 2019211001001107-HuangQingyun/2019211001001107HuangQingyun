@@ -56,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
             System.out.println("处理了"+count+"条数据");
             stmt=con.createStatement();
             rs=stmt.executeQuery(sql);
-            response.setContentType("text/html");
+            response.setContentType("text/html charset=utf-8");
             PrintWriter out=response.getWriter();
 //            out.println("<table  border=\"1\">");
 //            out.println("<tr>");
@@ -90,6 +90,6 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("WEB-INF/views/register.jsp").forward(request,response);
     }
 }
