@@ -1,10 +1,5 @@
-<%@ page import="com.HuangQingyun.model.User" %><%--
-  Created by IntelliJ IDEA.
-  User: 原生优质青年
-  Date: 2021/4/15
-  Time: 20:43
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.HuangQingyun.model.User" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%@include file="header.jsp"%>
@@ -16,15 +11,15 @@
     <tr>
         <td>ID</td><td><%=user1.getId()%></td>
     <tr></tr>
-        <td>Username</td><td><%=user1.getUsername()%></td>
+    <td>Username</td><td><%=user1.getUsername()%></td>
     <tr></tr>
-        <td>Password</td><td><%=user1.getPassword()%></td>
+    <td>Password</td><td><%=user1.getPassword()%></td>
     <tr></tr>
-        <td>Email</td><td><%=user1.getEmail()%></td>
+    <td>Email</td><td><%=user1.getEmail()%></td>
     <tr></tr>
-        <td>Gender</td><td><%=user1.getGender()%></td>
+    <td>Gender</td><td><%=user1.getGender()%></td>
     <tr></tr>
-        <td>Birthdate</td><td><%=user1.getBirthdate()%></td>
+    <td>Birthdate</td><td><%=user1.getBirthdate()%></td>
     <tr></tr>
     <td><a href="updateUser">Update<a/></td>
     </tr>

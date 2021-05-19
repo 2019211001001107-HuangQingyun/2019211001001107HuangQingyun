@@ -23,8 +23,8 @@ public class LoginServlet extends HttpServlet {
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String sql="Select * from usertable where username=? and password=?";
-        String username = request.getParameter("Username");
-        String password = request.getParameter("Password");
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
         PrintWriter out=response.getWriter();
 
 //            pstmt=con.prepareStatement(sql);

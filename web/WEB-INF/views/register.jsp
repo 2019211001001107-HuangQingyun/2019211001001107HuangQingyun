@@ -51,11 +51,13 @@
     out.println("<h3>"+request.getAttribute("message")+"</h3>");
 }%>
 <form method="post" action="register">
-    <input type="text" name="username" placeholder="Username" />  <input type="password" name="password" placeholder="password" />   <input type="text" name="email" placeholder="Email">
+    <input type="text" name="username" placeholder="Username" />
+    <input type="password" name="password" placeholder="password" />
+    <input type="text" name="email" placeholder="Email">
  <label> Gender </label><span> &nbsp;<input type="radio" 
 style="width: 15px; height: 15px; display:inline;" name="gender" value="male" checked/>&nbsp;Male&nbsp;<input type="radio" style="width: 15px; height: 15px;   display: inline;" name="gender" value="female"/>&nbsp;Female</span>
    <span></span>
-   <input type="text" name="birthdate" placeholder="Date of Birth (yyyy-mm-dd)">
+   <input type="text" name="birthDate" placeholder="Date of Birth (yyyy-mm-dd)">
     <button type="submit" class="btn btn-default">Register</button>
 </form>
 					</div><!--/sign up form-->

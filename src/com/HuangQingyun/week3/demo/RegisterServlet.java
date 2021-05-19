@@ -37,26 +37,27 @@ public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String sql="Select * from usertable";
-        String SQL2="insert into usertable value(?,?,?,?,?,?)";
-        String ID=request.getParameter("ID");
-        String username = request.getParameter("Username");
-        String password = request.getParameter("Password");
-        String email = request.getParameter("Email");
-        String gender = request.getParameter("Gender");
-        String brithDate = request.getParameter("BrithDate");
+        String SQL2="insert into usertable(username,password,email,Gender,birthdate) value(?,?,?,?,?)";
+
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        String email = request.getParameter("email");
+        String gender = request.getParameter("gender");
+        String brithDate = request.getParameter("birthDate");
         try {
             pstmt=con.prepareStatement(SQL2);
-            pstmt.setString(1,ID);
-            pstmt.setString(2,username);
-            pstmt.setString(3,password);
-            pstmt.setString(4,email);
-            pstmt.setString(5, gender);
-            pstmt.setString(6,brithDate);
+
+            pstmt.setString(1,username);
+            pstmt.setString(2,password);
+            pstmt.setString(3,email);
+            pstmt.setString(4, gender);
+            pstmt.setString(5,brithDate);
+            System.out.println("sql:"+SQL2);
             int count=pstmt.executeUpdate();
             System.out.println("处理了"+count+"条数据");
             stmt=con.createStatement();
             rs=stmt.executeQuery(sql);
-            response.setContentType("text/html charset=utf-8");
+//            response.setContentType("text/html charset=utf-8");
             PrintWriter out=response.getWriter();
 //            out.println("<table  border=\"1\">");
 //            out.println("<tr>");
@@ -78,10 +79,10 @@ public class RegisterServlet extends HttpServlet {
 //                out.println("</tr>");
 //            }
 //            out.println("</table>");
-            request.setAttribute("rsname",rs);
+//            request.setAttribute("rsname",rs);
 //        request.getRequestDispatcher("userList.jsp").forward(request,response);
 //            System.out.println(" i am in RegisterServlet-> do Post() ->after forward()");
-            response.sendRedirect("login.jsp");
+            response.sendRedirect("login");
         } catch (SQLException e) {
             e.printStackTrace();
         }

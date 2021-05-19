@@ -1,15 +1,8 @@
-<%@ page import="com.HuangQingyun.model.User" %><%--
-  Created by IntelliJ IDEA.
-  User: 原生优质青年
-  Date: 2021/4/28
-  Time: 23:54
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.HuangQingyun.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="header.jsp" %>
 <h1>User Update <h1/>
-    <%
-
+        <%
         User u=(User) session.getAttribute("user");
         %>
     <form method="post" action="${pageContext.request.contextPath}/updateUser">
@@ -25,4 +18,4 @@
         <input class="submit" type=submit  value="Save Changes" />
 
     </form>
-<%@include file="footer.jsp" %>
+    <%@include file="footer.jsp" %>
