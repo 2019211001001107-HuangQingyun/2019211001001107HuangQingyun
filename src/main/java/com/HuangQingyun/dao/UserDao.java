@@ -25,28 +25,28 @@ public class UserDao implements IUserDao {
 
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
-        String sql="Update usertable set id=?,username=?,password=?,email=?,Gender=?,birthdate=?";
+        String sql="Update usertable set username=?,password=?,email=?,Gender=?,birthdate=? where id=?";
         PreparedStatement st=con.prepareStatement(sql);
-        st.setString(1,user.getId());
-        st.setString(2,user.getUsername());
-        st.setString(3,user.getPassword());
-        st.setString(4,user.getEmail());
-        st.setString(5,user.getGender());
-        st.setDate(6,user.getBirthdate());
+        st.setInt(6,user.getId());
+        st.setString(1,user.getUsername());
+        st.setString(2,user.getPassword());
+        st.setString(3,user.getEmail());
+        st.setString(4,user.getGender());
+        st.setDate(5,user.getBirthdate());
         int rs=st.executeUpdate();
         return  rs;
     }
 
     @Override
-    public User findById(Connection con, String id) throws SQLException {
+    public User findById(Connection con, int id) throws SQLException {
         String sql="Select * from usertable where id=?";
         PreparedStatement st=con.prepareStatement(sql);
-        st.setString(1,id);
+        st.setInt(1,id);
         ResultSet rs=st.executeQuery();
         User user=null;
         if(rs.next()){
             user=new User();
-            user.setId(rs.getString(1));
+            user.setId(rs.getInt(1));
             user.setUsername(rs.getString(2));
             user.setPassword(rs.getString(3));
             user.setEmail(rs.getString(4));
@@ -68,7 +68,7 @@ public class UserDao implements IUserDao {
         User user=null;
         if(rs.next()){
           user=new User();
-          user.setId(rs.getString(1));
+          user.setId(rs.getInt(1));
           user.setUsername(rs.getString(2));
           user.setPassword(rs.getString(3));
           user.setEmail(rs.getString(4));
@@ -88,7 +88,7 @@ public class UserDao implements IUserDao {
         List<User> ls =new ArrayList<User>();
         if(rs.next()){
             user=new User();
-            user.setId(rs.getString(1));
+            user.setId(rs.getInt(1));
             user.setUsername(rs.getString(2));
             user.setPassword(rs.getString(3));
             user.setEmail(rs.getString(4));
@@ -109,7 +109,7 @@ public class UserDao implements IUserDao {
         List<User> ls =new ArrayList<User>();
         if(rs.next()){
             user=new User();
-            user.setId(rs.getString(1));
+            user.setId(rs.getInt(1));
             user.setUsername(rs.getString(2));
             user.setPassword(rs.getString(3));
             user.setEmail(rs.getString(4));
@@ -130,7 +130,7 @@ public class UserDao implements IUserDao {
         List<User> ls =new ArrayList<User>();
         if(rs.next()){
             user=new User();
-            user.setId(rs.getString(1));
+            user.setId(rs.getInt(1));
             user.setUsername(rs.getString(2));
             user.setPassword(rs.getString(3));
             user.setEmail(rs.getString(4));
@@ -151,7 +151,7 @@ public class UserDao implements IUserDao {
         List<User> ls =new ArrayList<User>();
         if(rs.next()){
             user=new User();
-            user.setId(rs.getString(1));
+            user.setId(rs.getInt(1));
             user.setUsername(rs.getString(2));
             user.setPassword(rs.getString(3));
             user.setEmail(rs.getString(4));
@@ -173,7 +173,7 @@ public class UserDao implements IUserDao {
         List<User> ls =new ArrayList<User>();
         if(rs.next()){
             user=new User();
-            user.setId(rs.getString(1));
+            user.setId(rs.getInt(1));
             user.setUsername(rs.getString(2));
             user.setPassword(rs.getString(3));
             user.setEmail(rs.getString(4));
@@ -194,7 +194,7 @@ public class UserDao implements IUserDao {
         List<User> ls =new ArrayList<User>();
         if(rs.next()){
             user=new User();
-            user.setId(rs.getString(1));
+            user.setId(rs.getInt(1));
             user.setUsername(rs.getString(2));
             user.setPassword(rs.getString(3));
             user.setEmail(rs.getString(4));

@@ -26,7 +26,7 @@ public class UpdateUserServlet extends HttpServlet {
         String Birthdate=request.getParameter("BrithDate");
         //create object and set  value
         User user=new User();
-        user.setId(Id);
+        user.setId(Integer.parseInt(Id));
         user.setUsername(username);
         user.setPassword(password);
         user.setEmail(email);
@@ -42,7 +42,7 @@ public class UpdateUserServlet extends HttpServlet {
             session.setAttribute("user",user);
 
             if(userDao.updateUser(con,user)>0){
-                request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+                request.getRequestDispatcher("accountDetails").forward(request,response);
             }
         } catch (SQLException e) {
             e.printStackTrace();
