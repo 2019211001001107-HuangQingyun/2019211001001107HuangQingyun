@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+<!--    <servlet>-->
+<!--        <servlet-name>name</servlet-name>-->
+<!--        <servlet-class>com.HuangQingyun.week2.HttpServlet</servlet-class>-->
+<!--    </servlet>-->
+    <servlet>
+        <servlet-name>LifeCycle</servlet-name>
+        <servlet-class>com.HuangQingyun.week3.demo.LifeCycleServlet</servlet-class>
+    </servlet>
+    <!--    <servlet>-->
+    <!--        <servlet-name>RegisterServlet</servlet-name>-->
+    <!--        <servlet-class>com.HuangQingyun.week3.demo.RegisterServlet</servlet-class>-->
+    <!--    </servlet>-->
+    <!--    <servlet>-->
+    <!--        <servlet-name>ConfigDemoServlet</servlet-name>-->
+    <!--        <servlet-class>com.HuangQingyun.week4.demo.ConfigDemoServlet</servlet-class>-->
+    <!--        <init-param>-->
+    <!--                    <param-name>name</param-name>-->
+    <!--                    <param-value>HuangQingyun</param-value>-->
+    <!--                </init-param>-->
+    <!--                <init-param>-->
+    <!--                    <param-name>studentID</param-name>-->
+    <!--                    <param-value>2019211001001107</param-value>-->
+    <!--                </init-param>-->
+    <!--    </servlet>-->
+
+
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>name</servlet-name>-->
+<!--        <url-pattern>/hello</url-pattern>-->
+<!--    </servlet-mapping>-->
+    <servlet-mapping>
+        <servlet-name>LifeCycle</servlet-name>
+        <url-pattern>/my</url-pattern>
+    </servlet-mapping>
+    <!--    <servlet-mapping>-->
+    <!--        <servlet-name>RegisterServlet</servlet-name>-->
+    <!--        <url-pattern>/register</url-pattern>-->
+    <!--    </servlet-mapping>-->
+
+    <!--    <servlet-mapping>-->
+    <!--        <servlet-name>ConfigDemoServlet</servlet-name>-->
+    <!--        <url-pattern>/config</url-pattern>-->
+    <!--    </servlet-mapping>-->
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </context-param>
+    <context-param>
+        <param-name>url</param-name>
+        <param-value>jdbc:mysql://localhost:3306/userdb?serverTimezone=UTC</param-value>
+    </context-param>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value>940818</param-value>
+    </context-param>
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+    </welcome-file-list>
+
+    <filter>
+        <filter-name>HelloFilter</filter-name>
+        <filter-class>com.HuangQingyun.filter.HelloFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HelloFilter</filter-name>
+        <url-pattern>/hello</url-pattern><!-- url of HelloServlet - this filter is only for HelloFilter-->
+    </filter-mapping>
+
+    <!--2nd-->
+    <filter>
+        <filter-name>LoggerFilter</filter-name>
+        <filter-class>com.HuangQingyun.filter.LoggerFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoggerFilter</filter-name>
+        <url-pattern>/hello</url-pattern>
+    </filter-mapping>
+
+    <!-- 3rd one-->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>com.HuangQingyun.filter.AuthFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/hello</url-pattern>
+    </filter-mapping>
+
+
+</web-app>
