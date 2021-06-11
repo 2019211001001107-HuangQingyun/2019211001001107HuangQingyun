@@ -1,4 +1,4 @@
-package com.Lab2;
+package com.lab2;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

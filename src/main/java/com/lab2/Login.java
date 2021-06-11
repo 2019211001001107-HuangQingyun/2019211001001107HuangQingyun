@@ -1,4 +1,4 @@
-package com.Lab2;
+package com.lab2;
 
 public class Login {
     private String username;
@@ -18,8 +18,8 @@ public class Login {
         return password;
     }
 
-    public void setPassword(String passwork) {
-        this.password = passwork;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

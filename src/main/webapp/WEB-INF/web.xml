@@ -3,10 +3,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-<!--    <servlet>-->
-<!--        <servlet-name>name</servlet-name>-->
-<!--        <servlet-class>com.HuangQingyun.week2.HttpServlet</servlet-class>-->
-<!--    </servlet>-->
+    <!--    <servlet>-->
+    <!--        <servlet-name>name</servlet-name>-->
+    <!--        <servlet-class>com.HuangQingyun.week2.HttpServlet</servlet-class>-->
+    <!--    </servlet>-->
     <servlet>
         <servlet-name>LifeCycle</servlet-name>
         <servlet-class>com.HuangQingyun.week3.demo.LifeCycleServlet</servlet-class>
@@ -29,10 +29,10 @@
     <!--    </servlet>-->
 
 
-<!--    <servlet-mapping>-->
-<!--        <servlet-name>name</servlet-name>-->
-<!--        <url-pattern>/hello</url-pattern>-->
-<!--    </servlet-mapping>-->
+    <!--    <servlet-mapping>-->
+    <!--        <servlet-name>name</servlet-name>-->
+    <!--        <url-pattern>/hello</url-pattern>-->
+    <!--    </servlet-mapping>-->
     <servlet-mapping>
         <servlet-name>LifeCycle</servlet-name>
         <url-pattern>/my</url-pattern>
@@ -93,6 +93,15 @@
     <filter-mapping>
         <filter-name>AuthFilter</filter-name>
         <url-pattern>/hello</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>HuangQingyunFilter</filter-name>
+        <filter-class>com.lab2.HuangQingyunFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>HuangQingyunFilter</filter-name>
+        <url-pattern>/lab2/welcome.jsp</url-pattern>
+        <url-pattern>/lab2/validate.jsp</url-pattern>
     </filter-mapping>
 
 
