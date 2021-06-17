@@ -1,12 +1,7 @@
 
 package com.HuangQingyun.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
@@ -197,12 +192,13 @@ public class OrderDao implements IOrderDao {
 	@Override 
 	public List<Order> findAll(Connection con) {
 
-		List<Order> orderList=new ArrayList<Order>();
+		List<Order> orderList=new ArrayList<>();
 		try {
-			String queryString = "select * from order";// userdb.Order for mysql
-			PreparedStatement st = con.prepareStatement(queryString);
+			String queryString = "select * from userdb.order";// userdb.Order for mysql
+			Statement st = con.createStatement();
 			//st.setObject(1, value);
-			ResultSet	rs = st.executeQuery();
+
+			ResultSet	rs = st.executeQuery(queryString);
 			while(rs.next()){
 				Order o=new Order();
 				o.setOrderId(rs.getInt("OrderID"));
@@ -213,7 +209,7 @@ public class OrderDao implements IOrderDao {
 				o.setLastName(rs.getString("LastName"));
 				o.setAddress1(rs.getString("Address1"));
 				o.setAddress2(rs.getString("Address2"));
-				o.setCity(rs.getString("city"));
+				o.setCity(rs.getString("City"));
 				o.setState(rs.getString("State"));
 				o.setPostalCode(rs.getString("PostalCode"));
 				o.setCountry(rs.getString("Country"));
